@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 import React from 'react'
 
@@ -12,7 +13,10 @@ import {
 import { FlagIcon, PlayIcon, SearchIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import HeaderIcon from './HeaderIcon'
 
+import { signOut, useSession } from 'next-auth/react'
+
 function Header() {
+  const { data: session } = useSession()
   return (
     <div className="sticky top-0 z-50 flex items-center justify-between p-2 md:px-10 shadow-md">
       <div className="flex items-center">
@@ -44,13 +48,16 @@ function Header() {
         </div>
       </div>
 
-      <div className="flex justify-end items-center space-x-3">
-        {/* Profile pic */}
-        <p className="font-semibold text-lg">Truong Giai Hung</p>
+      <div className="flex items-center space-x-3">
         <ViewGridIcon className="icon" />
         <ChatIcon className="icon" />
         <BellIcon className="icon" />
-        <ChevronDownIcon className="icon" />
+        <img
+          src={session.user.image}
+          alt=""
+          className="w-12 h-12 rounded-full object-contain cursor-pointer"
+          onClick={() => signOut()}
+        />
       </div>
     </div>
   )
