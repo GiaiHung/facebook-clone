@@ -18,7 +18,7 @@ import { signOut, useSession } from 'next-auth/react'
 function Header() {
   const { data: session } = useSession()
   return (
-    <div className="sticky top-0 z-50 flex items-center justify-between p-2 md:px-10 shadow-md">
+    <div className="sticky top-0 z-50 flex items-center justify-between bg-white p-2 md:px-10 shadow-md">
       <div className="flex items-center">
         <Image
           src="https://links.papareact.com/5me"
