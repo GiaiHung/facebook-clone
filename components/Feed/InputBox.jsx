@@ -80,7 +80,7 @@ function InputBox() {
   }
 
   return (
-    <div className="my-6 p-2 bg-white rounded-md shadow-md text-gray-500 font-medium">
+    <div className="my-6 mx-2 p-2 bg-white rounded-md shadow-md text-gray-500 font-medium md:mx-0">
       <div className="flex gap-x-4 items-center pt-4">
         <Image className="rounded-full" src={image} alt="" width={40} height={40} layout="fixed" />
         <form className="flex flex-1" onSubmit={sendPost}>
@@ -105,16 +105,16 @@ function InputBox() {
       <div className="flex items-center justify-around gap-x-4 w-full py-4">
         <div className="inputIcon">
           <VideoCameraIcon className="h-7 text-red-500" />
-          <p className="text-xs sm:text-sm xl:text-base">Live video</p>
+          <p className="text-xs sm:text-sm xl:text-base">Video</p>
         </div>
         <div onClick={() => filepickerRef.current.click()} className="inputIcon">
           <CameraIcon className="h-7 text-green-400" />
-          <p className="text-xs sm:text-sm xl:text-base">Photo/Video</p>
+          <p className="text-xs sm:text-sm xl:text-base">Photo</p>
           <input ref={filepickerRef} type="file" hidden onChange={uploadImage} />
         </div>
         <div className="inputIcon">
           <EmojiHappyIcon className="h-7 text-yellow-300" />
-          <p className="text-xs sm:text-sm xl:text-base">Feeling/Activity</p>
+          <p className="text-xs sm:text-sm xl:text-base">Feeling</p>
         </div>
       </div>
     </div>

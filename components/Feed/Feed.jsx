@@ -5,7 +5,7 @@ import Posts from './Posts'
 
 function Feed() {
   return (
-    <div className='flex-grow h-screen pb-44 pt-6 mr-4 overflow-y-auto bg-gray-300'>
+    <div className='flex-grow h-screen pb-44 pt-6 mr-4 overflow-y-auto bg-gray-300 scrollbar-hide'>
       <div className='max-w-md mx-auto md:max-w-lg'>
         <Stories />
         <InputBox />
