@@ -1,14 +1,13 @@
 import Head from 'next/head'
-import Header from '../components/Header'
+import Header from '../components/Header/Header'
 
 import { useSession } from 'next-auth/react'
 import Login from '../components/Login'
-import Sidebar from '../components/Sidebar'
-import Feed from '../components/Feed'
+import Sidebar from '../components/Sidebar/Sidebar'
+import Feed from '../components/Feed/Feed'
 
 export default function Home() {
   const { data: session } = useSession()
-  console.log(session)
   if (!session) return <Login />
 
   return (
