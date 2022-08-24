@@ -102,7 +102,7 @@ function InputBox() {
         )}
       </div>
 
-      <div className="flex items-center justify-around gap-x-4 w-full py-4">
+      <div className="flex items-center justify-around gap-x-2 md:gap-x-4 w-full py-4">
         <div className="inputIcon">
           <VideoCameraIcon className="h-7 text-red-500" />
           <p className="text-xs sm:text-sm xl:text-base">Video</p>
