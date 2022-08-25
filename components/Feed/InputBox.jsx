@@ -48,7 +48,6 @@ function InputBox() {
             (error) => alert(error),
             () => {
               getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
-                console.log(url);
                 const postRef = doc(db, 'posts', document.id)
                 await setDoc(postRef, { postImage: url }, { merge: true })
               })
@@ -82,25 +81,33 @@ function InputBox() {
   return (
     <div className="my-6 mx-2 p-2 bg-white rounded-md shadow-md text-gray-500 font-medium md:mx-0">
       <div className="flex gap-x-4 items-center pt-4">
-        <Image className="rounded-full" src={image} alt="" width={40} height={40} layout="fixed" />
-        <form className="flex flex-1" onSubmit={sendPost}>
+        <img className="hidden md:inline-flex w-10 h-10 rounded-full" src={image} alt="" />
+        <form className="flex flex-col md:flex-row gap-y-4 flex-1" onSubmit={sendPost}>
           <input
             className="px-6 h-12 flex-grow bg-gray-200 rounded-full outline-none"
             type="text"
             placeholder={`What's on your mind now, ${name}?`}
             ref={inputRef}
           />
-        </form>
-        {imageUpload && (
-          <div
-            onClick={removeUploadImage}
-            className="flex flex-col filter transform hover:scale-105 ease-in duration-150 hover:brightness-125 cursor-pointer"
+          {imageUpload && <button
+            className="block bg-green-500 text-white px-4 py-2 rounded-full outline-none cursor-pointer"
+            type="submit"
+            onSubmit={sendPost}
           >
-            <img className="h-10 object-contain" src={imageUpload} alt="" />
-            <p className="text-red-500 text-xs text-center">Remove</p>
-          </div>
-        )}
+            Submit
+          </button>}
+        </form>
       </div>
+
+      {imageUpload && (
+        <div
+          onClick={removeUploadImage}
+          className="flex flex-col filter transform hover:scale-105 ease-in duration-150 hover:brightness-125 cursor-pointer"
+        >
+          <img className="mt-4 h-28 object-contain" src={imageUpload} alt="" />
+          <p className="text-red-500 text-xs text-center">Remove</p>
+        </div>
+      )}
 
       <div className="flex items-center justify-around gap-x-2 md:gap-x-4 w-full py-4">
         <div className="inputIcon">
